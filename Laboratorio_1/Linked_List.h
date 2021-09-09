@@ -9,23 +9,28 @@ class Linked_List{
         node<T> *head;
         int size;
     public:
+        /*Constructores*/
         Linked_List();
         Linked_List(const Linked_List<T> &p);
         Linked_List(Linked_List<T> &&p);
-        void remove(T dato);
-        void insert(T dato);
-        void push_back(T dato);
-        void push_front(T dato);
-        void pop_front();
-        void pop_back();
+        /*Funciones miembro*/
+        bool find(T dato);/*Retorna un valor que verifique la existencia de un elemento*/
+        void remove(T dato);/*Remueve un elemento que se le pase como argumento*/
+        void insert(T dato);/*Inserta un elemento de forma ordenada ascedente*/
+        void push_back(T dato);/*Inserta elementos al final de la lista*/
+        void push_front(T dato);/*Inserta elementos al inicio de la lista*/
+        void pop_front();/*Elimina el primer elemento de la lista*/
+        void pop_back();/*Elimina el ultimo elemento de la lista*/
         void print();
         ~Linked_List();
 };
+
 template<typename T>
 Linked_List<T>::Linked_List(){
     this->head = nullptr;
     this->size = 0;
 }
+
 template<typename T>
 Linked_List<T>::Linked_List(const Linked_List<T> &p){
     node<T> *aux = p.head;
@@ -36,7 +41,6 @@ Linked_List<T>::Linked_List(const Linked_List<T> &p){
         aux = aux->get_sig();
     }
 }
-
 
 template<typename T>
 void Linked_List<T>::push_back(T dato){
@@ -51,6 +55,56 @@ void Linked_List<T>::push_back(T dato){
         temp->set_sig(new_node);
     }
     size++;
+}
+
+template<typename T>
+void Linked_List<T>::pop_front(){
+    if(!this->head){
+        cout << "La lista esta vacia.\n";
+    }else{
+        node<T> *nuevo = this->head->get_sig();
+        delete head;
+        head = nuevo;
+    }
+    size--;
+}
+
+template<typename T>
+void Linked_List<T>::pop_back(){
+    if(!this->head){
+        cout << "La lista esta vacia.\n";
+    }else if(size == 1){
+        delete head;
+        this->head = nullptr;
+    }else{
+        node<T> *act = this->head;
+        node<T> *ant;
+        while(act->get_sig()){
+            ant = act;
+            act = act->get_sig();
+        }
+        ant->set_sig(nullptr);
+        delete act;
+    }
+    size--;
+}
+
+template<typename T>
+bool Linked_List<T>::find(T dato){
+    if(!this->head){
+        cout << "La lista se encuentra vacia\n";
+        return false;
+    }else{
+        node<T>*ptr = this->head;
+        while(ptr){
+            if(ptr->get_dato()==dato){
+                return true;
+            }else{
+                ptr = ptr->get_sig();
+            }
+        }
+        return false;
+    }
 }
 
 template<typename T>
@@ -79,7 +133,7 @@ void Linked_List<T>::remove(T data){
     node<T> *temp = this->head;
     node<T> *temp2 = this->head->get_sig();
     if(!temp){
-        std::cout << "La lista se encuentra vacia.\n";
+        cout << "La lista se encuentra vacia.\n";
         return;
     }
     else{
@@ -98,7 +152,7 @@ void Linked_List<T>::remove(T data){
                 temp = temp->get_sig();
                 temp2 = temp2->get_sig();
             }
-            std::cout << "El dato '"<< data <<"' no se encuentra en la Lista.\n";
+            cout << "El dato '"<< data <<"' no se encuentra en la Lista.\n";
             return;
         }
     }
@@ -111,19 +165,22 @@ void Linked_List<T>::print(){
         cout << "La lista esta vacia.\n";
     }else{
         int i = 1;
-        while(ptr){
-            cout<<"Nodo "<<i<<": [" << ptr->get_dato() << "]\n";
+        while(i<this->size){
+            cout<<"[" << i << ":" << ptr->get_dato() << "]->";
             ptr = ptr->get_sig();
             i++; 
         }
+        cout << "[" << i << ":" << ptr->get_dato() << "]\n";
+        return;
     }
 }
 
-
-
 template<typename T>
-Linked_List<T>::~Linked_List()
-{
+Linked_List<T>::~Linked_List(){
+    while(this->size){
+        this->pop_back();
+    }
+    delete head;
 }
 
 #endif
