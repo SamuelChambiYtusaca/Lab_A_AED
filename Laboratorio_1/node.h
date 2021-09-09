@@ -42,4 +42,8 @@ void node<T>::set_dato(T dato){
     this->dato = dato;
     return;
 }
+
+template<typename T>
+node<T>::~node(){}
+
 #endif

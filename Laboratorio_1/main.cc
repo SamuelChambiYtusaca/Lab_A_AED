@@ -8,5 +8,14 @@ int main(){
     L1.push_back(256);
     L1.push_back(25);
     L1.print();
+    if(L1.find(271)){
+        cout << "Encontrado\n";
+    }else{cout << "Nada\n";}
+    L1.remove(271);
+    L1.remove(789);
+    L1.print();
+    if(L1.find(271)){
+        cout << "Encontrado\n";
+    }else{cout << "Nada\n";}
     return 1;
 }
