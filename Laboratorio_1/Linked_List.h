@@ -10,9 +10,9 @@ class Linked_List{
         int size;
     public:
         /*Constructores*/
-        Linked_List();
-        Linked_List(const Linked_List<T> &p);
-        Linked_List(Linked_List<T> &&p);
+        Linked_List();/*Defecto*/
+        Linked_List(const Linked_List<T> &p);/*Copia*/
+        Linked_List(Linked_List<T> &&p);/*Movimiento*/
         /*Funciones miembro*/
         bool find(T dato);/*Retorna un valor que verifique la existencia de un elemento*/
         void remove(T dato);/*Remueve un elemento que se le pase como argumento*/
@@ -40,6 +40,14 @@ Linked_List<T>::Linked_List(const Linked_List<T> &p){
         this->push_back(aux->get_dato());
         aux = aux->get_sig();
     }
+}
+
+template<typename T>
+Linked_List<T>::Linked_List(Linked_List<T> &&p){
+    this->head = p.head;
+    this->size = p.size;
+    p.head = nullptr;
+    p.size = 0;
 }
 
 template<typename T>
