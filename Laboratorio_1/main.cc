@@ -13,6 +13,10 @@ int main(){
     }else{cout << "Nada\n";}
     L1.remove(271);
     L1.remove(789);
+    L1.pop_front();
+    L1.pop_back();
+    L1.push_front(10);
+    L1.insert(1);
     L1.print();
     if(L1.find(271)){
         cout << "Encontrado\n";

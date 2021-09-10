@@ -44,6 +44,7 @@ void node<T>::set_dato(T dato){
 }
 
 template<typename T>
-node<T>::~node(){}
+node<T>::~node(){
 
+}
 #endif

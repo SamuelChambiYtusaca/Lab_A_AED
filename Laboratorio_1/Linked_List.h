@@ -51,6 +51,19 @@ Linked_List<T>::Linked_List(Linked_List<T> &&p){
 }
 
 template<typename T>
+void Linked_List<T>::push_front(T dato){
+    node<T> *new_node = new node<T>(dato);
+        if(head==nullptr){
+            head = new_node;
+        }else{
+            node<T> *Inicio = head;
+            head = new_node;
+            head->set_sig(Inicio);  
+        }
+        size++;
+}
+
+template<typename T>
 void Linked_List<T>::push_back(T dato){
     node<T> *new_node = new node<T>(dato);
     node<T> *temp = head;
