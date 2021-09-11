@@ -14,6 +14,7 @@ class node{
         void set_dato(T);
         ~node();
 };
+
 template<typename T>
 node<T>::node(){
     this->dato = NULL;
