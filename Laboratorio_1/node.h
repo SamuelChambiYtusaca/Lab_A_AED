@@ -28,15 +28,18 @@ template<typename T>
 node<T>* node<T>::get_sig(){
     return this->sig;
 }
-template<typename T>
-T node<T>::get_dato(){
-    return this->dato;
-}
+
 template<typename T>
 void node<T>::set_sig(node<T> *siguiente){
     this->sig = siguiente;
     return;
 }
+
+template<typename T>
+T node<T>::get_dato(){
+    return this->dato;
+}
+
 template<typename T>
 void node<T>::set_dato(T dato){
     this->dato = dato;
