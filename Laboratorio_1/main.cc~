@@ -34,14 +34,6 @@ int main(){
     L2.insert(250);
     L2.insert(1626);
     L2.print();
-    L2.remove(15);
-    L2.remove(1626);
-    L2.remove(1626);
-    L2.remove(100);
-    L2.print();
-    L2.pop_back();
-    L2.pop_back();
-    L2.print();
-    cout << L2.find(10) << "\n";
+    cout << L2.find(74) << "\n";
     return 1;
 }
