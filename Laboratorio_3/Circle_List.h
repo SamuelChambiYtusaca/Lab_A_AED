@@ -20,6 +20,7 @@ class Circle_List{
         /*Sobrecarga de Operadores*/
         const Circle_List<T> &operator= (const Circle_List<T> &);
         Circle_List<T> operator+ (const Circle_List<T> &); /*Concatenacion de listas con sobrecarga de operador de adicion*/ 
+        ~Circle_List<T>();
 };
 
 template<typename T>
@@ -185,5 +186,8 @@ Circle_List<T> Circle_List<T>::operator+ (const Circle_List<T> &p){
     }
     return nueva;
 }
+
+template<typename T>
+Circle_List<T>::~Circle_List(){}
 
 #endif
