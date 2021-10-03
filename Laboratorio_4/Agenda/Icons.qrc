@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>3018564_list_icon.png</file>
+        <file>4172313_cancel_block_icon.png</file>
+        <file>4172317_follow_person_somebody_icon.png</file>
+    </qresource>
+    <qresource prefix="/new/prefix1"/>
+</RCC>
